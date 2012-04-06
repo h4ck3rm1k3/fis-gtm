@@ -169,6 +169,7 @@ void dyncall();
 /* Through Pentium Pro/II/III, should use CPUID to get real value perhaps */
 #define CACHELINE_SIZE	32
 #define MSYNC_ADDR_INCS	OS_PAGE_SIZE
+#define USHBIN_SUPPORTED
 #undef BIGENDIAN
 typedef char  mach_inst;	/* machine instruction */
 #endif /* __i386 */

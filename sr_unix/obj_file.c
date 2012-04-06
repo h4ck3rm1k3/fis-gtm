@@ -28,6 +28,7 @@
 #include "gtmio.h"
 #include "mmemory.h"
 #include "obj_file.h"
+#include "obj_filesp.h"
 
 GBLREF char		object_file_name[];
 GBLREF short		object_name_len;
@@ -51,7 +52,7 @@ static char			emit_buff[OBJ_EMIT_BUF_SIZE];	/* buffer for emit output */
 static int			emit_buff_used;			/* number of chars in emit_buff */
 static int			symcnt;
 static struct rel_table		*link_rel, *link_rel_end;	/* Linkage relocation entries.  */
-static struct linkage_entry	*linkage_first, *linkage_last;
+static linkage_entry	*linkage_first, *linkage_last;
 static struct sym_table		*symbols;
 
 void	emit_link_reference(int4 refoffset, mstr *name);
@@ -331,6 +332,9 @@ void	output_symbol(void)
  *
  *	Description:	Initialize symbol list, relocation information, linkage Psect list, linkage_size.
  */
+#ifndef MIN_LINK_PSECT_SIZE 
+#define MIN_LINK_PSECT_SIZE 0
+#endif 
 void	obj_init(void)
 {
 	lnkrel_cnt = symcnt = 0;
@@ -354,7 +358,7 @@ void	obj_init(void)
 void	comp_linkages(void)
 {
 	mstr			name;
-	struct linkage_entry	*linkagep;
+	linkage_entry	*linkagep;
 
 	for (linkagep = linkage_first; NULL != linkagep; linkagep = linkagep->next)
 	{
@@ -426,7 +430,7 @@ void	emit_literals(void)
  */
 int4	find_linkage(mstr* name)
 {
-	struct linkage_entry	*newlnk;
+	linkage_entry	*newlnk;
 	struct sym_table	*sym;
 
 	sym = define_symbol(GTM_LITERALS, name);
@@ -436,7 +440,7 @@ int4	find_linkage(mstr* name)
 		/* Add new linkage psect entry at end of list.  */
 		sym ->linkage_offset = linkage_size;
 
-		newlnk = (struct linkage_entry *)mcalloc(SIZEOF(struct linkage_entry));
+		newlnk = ( linkage_entry *)mcalloc(SIZEOF(linkage_entry));
 		newlnk->symbol = sym;
 		newlnk->next = NULL;
 		if (NULL == linkage_first)

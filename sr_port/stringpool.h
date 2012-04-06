@@ -1,3 +1,6 @@
+
+#ifndef INC_STRINGPOOL_H
+#define INC_STRINGPOOL_H
 /****************************************************************
  *								*
  *	Copyright 2001, 2010 Fidelity Information Services, Inc	*
@@ -9,7 +12,7 @@
  *								*
  ****************************************************************/
 
-typedef struct
+typedef struct spdesc_struct
 {
 	unsigned char *base, *free, *top, *lasttop, prvprt;
 } spdesc;
@@ -63,3 +66,5 @@ GBLREF	boolean_t	stringpool_unexpandable;
 		INVOKE_STP_GCOL(lcl_spc_needed);				\
 	assert(IS_STP_SPACE_AVAILABLE(lcl_spc_needed));				\
 }
+
+#endif

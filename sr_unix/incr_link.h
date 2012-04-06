@@ -16,7 +16,8 @@
 #include "incr_link_sp.h"
 bool incr_link(int file_desc, zro_ent *zro_entry);
 #else
-bool incr_link(int file_desc);
+bool	incr_link (int file_desc, zro_ent *zro_entry);
+//bool incr_link(int file_desc);
 #endif
 
 #ifdef __MVS__

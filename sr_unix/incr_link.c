@@ -8,14 +8,14 @@
  *	the license, please stop and do not read further.	*
  *								*
  ****************************************************************/
-
 #include "mdef.h"
 
 #include <errno.h>
 #include "gtm_string.h"
 #include "gtm_unistd.h"
 #include "gtm_stdio.h"
-
+#include "obj_filesp.h"
+#include "objlabel.h"
 #include "rtnhdr.h"
 #include "compiler.h"
 #include "urx.h"
@@ -23,8 +23,12 @@
 #include "gtmio.h"
 #include "zroutines.h"
 #include "incr_link.h"
+#include "incr_link_sp.h"
+
 #include "cachectl.h"
+
 #include "obj_file.h"
+
 #include "stringpool.h"
 #include "gtm_limits.h"
 #include "min_max.h"
@@ -204,6 +208,10 @@ bool	incr_link (int file_desc, zro_ent *zro_entry)
 			if (0 != status)
 				zl_error(file_desc, zro_entry, ERR_INVOBJ, 0, 0, 0, 0);
 #endif
+                        
+#ifndef NATIVE_HDR_LEN
+missing NATIVE_HDR_LEN
+#endif 
 		if (-1 != (status = (ssize_t)lseek(file_desc, NATIVE_HDR_LEN, SEEK_SET)))
 		{
 			ZOS_ONLY(extract_text(file_desc, &total_length);)

@@ -116,6 +116,7 @@ void	obj_code (uint4 src_lines, uint4 checksum)
 
 	/* Define the routine name global symbol */
 	define_symbol(GTM_MODULE_DEF_PSECT, (mstr *)&int_module_name);
+        //struct sym_table *define_symbol(unsigned char psect, mstr *name, int4 value);
 
 	memset(&rhead, 0, SIZEOF(rhead));
 	alloc_reg();

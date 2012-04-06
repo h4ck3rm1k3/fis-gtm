@@ -8,13 +8,13 @@
  *	the license, please stop and do not read further.	*
  *								*
  ****************************************************************/
+extern int x_we_have_included;
+#ifndef OBJ_FILESP_INCLUDED2
+#define OBJ_FILESP_INCLUDED2
 
-#ifndef OBJ_FILESP_INCLUDED
-#define OBJ_FILESP_INCLUDED
-
-typedef struct linkage_entry
+typedef struct linkage_entry_struct
 {
-	struct linkage_entry	*next;
+	struct linkage_entry_struct	*next;
 	struct sym_table	*symbol;
 } linkage_entry;
 

@@ -20,7 +20,7 @@
 	void emit_reference(uint4 refaddr, mstr *name, uint4 *result);
 #endif
 
-struct sym_table *define_symbol(unsigned char psect, mstr *name, int4 value);
+struct sym_table *define_symbol(unsigned char psect, mstr *name);
 void emit_pidr(int4 refoffset, int4 data_offset, int4 *result);
 void buff_emit(void);
 void set_psect(unsigned char psect,unsigned char offset);

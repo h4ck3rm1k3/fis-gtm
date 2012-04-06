@@ -11,7 +11,7 @@
 #ifndef CMD_QLF_H_INCLUDED
 #define CMD_QLF_H_INCLUDED
 
-typedef struct
+typedef struct command_qualifier_struct
 {
 	uint4		qlf;
 	mval		object_file;
