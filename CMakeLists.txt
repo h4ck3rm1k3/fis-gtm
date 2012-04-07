@@ -18,7 +18,7 @@ include_directories(
 
 
 include(CTest)
-
+ENABLE_TESTING()
 
 #
 #  Look at the type of architecture.

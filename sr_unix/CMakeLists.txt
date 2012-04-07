@@ -908,3 +908,7 @@ add_library(dbcertifyunix
   dbcertify_signal_handler.c
   )
 
+ADD_EXECUTABLE(SimpleTest SimpleTest.c)
+
+ADD_TEST( ${CMAKE_CURRENT_BINARY_DIR}/SimpleTest Hello)
+
